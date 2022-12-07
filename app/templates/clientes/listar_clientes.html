@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+
+{% load meus_filtros %}
+
+{% block title %}
+    Listagem de clientes
+{% endblock title %}
+
+{% block content %}
+    <div class="box box-primary">
+        <div class="box-header with-border">
+            <h3 class="box-title">Listagem de clientes</h3>
+        </div><!-- box header with-border -->
+
+        <div class="box-body">
+            <table class="table table-head-fixed text-nowrap col-12" style="width: 100%;">
+                <thead>
+                    <tr>
+                        <th>Nome</th>
+                        <th>Data Nascimento</th>
+                        <th>Profissão</th>
+                        <th>Ação</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    {% for cliente in clientes %}
+                    <tr>
+                        <td>{{cliente.nome}}</td>
+                        <td>{{cliente.data_nascimento}}</td>
+                        <td>{{cliente.profissao}}</td>
+                        <td>
+                            <a href="#">Editar</a>
+                            <a href="#">Remover</a>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table><!-- table -->
+            <hr>
+            <a href="{% url 'cadastrar_cliente' %}">
+                <button class="btn btn-primary">Cadastrar</button>
+            </a>
+        </div><!-- box body -->
+    </div><!-- box box-primary -->
+{% endblock content %}
