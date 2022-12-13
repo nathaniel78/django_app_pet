@@ -14,6 +14,19 @@ def listar_cliente(request, id):
     cliente = cliente_service.listar_cliente_id(id)
     return render(request, 'clientes/listar_cliente.html', {'cliente': cliente})
 
+# Método remover cliente
+def remover_cliente(request, id):
+    cliente = cliente_service.listar_cliente_id(id)
+    endereco = cliente_service.listar_endereco_id(cliente.endereco.id)
+
+    if request.method == 'POST':
+        cliente_service.remover_cliente(cliente)
+        endereco_service.remover_endereco(endereco)
+
+        return redirect('listar_clientes')
+
+    return render(request, 'clientes/confirma_exclusao.html', {'cliente': cliente})
+
 # Método cadastro
 def cadastrar_cliente(request):
     # validando metodo POST
