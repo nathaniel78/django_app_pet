@@ -17,5 +17,5 @@ def editar_endereco(endereco_antigo, endereco_novo):
     return endereco_antigo
 
 # Método para remover endereço
-def remover_endere(endereco):
+def remover_endereco(endereco):
     endereco.delete()

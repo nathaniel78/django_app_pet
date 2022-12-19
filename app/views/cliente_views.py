@@ -17,7 +17,7 @@ def listar_cliente(request, id):
 # Método remover cliente
 def remover_cliente(request, id):
     cliente = cliente_service.listar_cliente_id(id)
-    endereco = cliente_service.listar_endereco_id(cliente.endereco.id)
+    endereco = endereco_service.listar_endereco_id(cliente.endereco.id)
 
     if request.method == 'POST':
         cliente_service.remover_cliente(cliente)
