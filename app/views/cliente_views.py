@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 from ..forms.cliente_forms import ClienteForm
 from ..forms.endereco_forms import EnderecoClienteForm
 from ..entidades import cliente, endereco
-from ..services import cliente_service, endereco_service
+from ..services import cliente_service, endereco_service, pet_service
 
 # Método listar
 def listar_clientes(request):
@@ -12,7 +12,8 @@ def listar_clientes(request):
 # Método listar cliente por id
 def listar_cliente(request, id):
     cliente = cliente_service.listar_cliente_id(id)
-    return render(request, 'clientes/listar_cliente.html', {'cliente': cliente})
+    pets = pet_service.listar_pets(id)
+    return render(request, 'clientes/listar_cliente.html', {'cliente': cliente, 'pets': pets})
 
 # Método remover cliente
 def remover_cliente(request, id):

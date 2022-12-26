@@ -2,6 +2,9 @@ from django.db import models
 from localflavor.br.br_states import STATE_CHOICES
 
 # Classe endereço cliente
+from spacy import blank
+
+
 class EnderecoCliente(models.Model):
 
 
@@ -38,3 +41,12 @@ class Pet(models.Model):
     categoria = models.CharField(max_length=2, choices=CATEGORIA_PET_CHOICES, null=False, blank=False)
     cor = models.CharField(max_length=2, choices=COR_PET_CHOICES, null=False, blank=False)
     dono = models.ForeignKey(Cliente, on_delete=models.CASCADE, null=False, blank=False)
+
+class ConsultaPet(models.Model):
+    pet = models.ForeignKey(Pet, on_delete=models.CASCADE, null=False, blank=False)
+    data = models.DateField(auto_now_add=True, null=False, blank=False)
+    motivo_consulta = models.CharField(max_length=200, null=False, blank=False)
+    peso_atual = models.FloatField(null=False, blank=False)
+    medicamento_atual = models.TextField(null=False, blank=True)
+    medicamentos_prescritos = models.TextField(null=False, blank=True)
+    exames_prescritos = models.TextField(null=False, blank=True)

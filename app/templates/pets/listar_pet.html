@@ -1,66 +1,36 @@
-{% extends 'base.html' %}
-
-{% load meus_filtros %}
+{% extends "base.html" %}
 
 {% load static %}
 
 {% block title %}
-Listagem de cliente
+Listagem de Pet
 {% endblock title %}
 
 {% block content %}
 <section class="content">
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-md-3">
+
+    <div class="row">
+        <div class="col-md-3">
                 <div class="card card-primary card-outline">
                     <div class="card-body box-profile">
                         <div class="text-center">
-                            <img class="profile-user-img img-fluid img-circle" src="{% static 'img' %}/ico-pessoa.jpg"
+                            <img class="profile-user-img img-fluid img-circle" src="{% static 'img' %}/pets.jpg"
                                  alt="User profile picture">
                         </div>
-                        <h3 class="profile-username text-center">{{cliente.nome}}</h3>
-                        <p class="text-muted text-center">{{cliente.profissao}}</p>
+                        <h3 class="profile-username text-center">{{pet.nome}}</h3>
+                        <p class="text-muted text-center">{{pet.get_categoria_display}}</p>
                         <ul class="list-group list-group-unbordered mb-3">
                             <li class="list-group-item">
-                                <b>Data nascimento:</b> <a class="float-right">{{cliente.data_nascimento}}</a>
+                                <b>Data nascimento:</b> <a class="float-right">{{pet.nascimento}}</a>
                             </li>
                             <li class="list-group-item">
-                                <b>CPF:</b> <a class="float-right">{{cliente.cpf}}</a>
-                            </li>
-                            <li class="list-group-item">
-                                <b>Endereço:</b> <a class="float-right">Rua {{cliente.endereco.rua}},
-                                {{cliente.endereco.cidade}}/{{cliente.endereco.estado}}</a>
+                                <b>Cor:</b> <a class="float-right">{{pet.get_cor_display}}</a>
                             </li>
                         </ul>
                     </div>
                 </div>
-                <div class="card card-primary">
-                    <div class="card-header">
-                        <h3 class="card-title">Pets</h3>
-                    </div>
-
-                    <div class="card-body">
-                        {% for pet in pets %}
-                        <a href="{% url 'listar_pet_id' pet.id %}" class="">
-                            <strong><i class="fas fa-paw mr-1"></i>{{ pet.nome }}</strong>
-                        </a>
-                        <p class="text-muted">
-                           {{ pet.get_categoria_display }} - {{ pet.get_cor_display }}
-                        </p>
-                        <hr>
-                        {% endfor %}
-                        <div class="row">
-                            <div class="col-md-12">
-                                <a href="{% url 'cadastrar_pet' cliente.id %}" class="btn btn-primary btn-block">
-                                    Cadastrar pet
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
             </div>
-            <div class="col-md-9">
+        <div class="col-md-9">
                 <div class="card">
                     <div class="card-header p-2">
                         <ul class="nav nav-pills">
@@ -103,7 +73,8 @@ Listagem de cliente
                     </div>
                 </div>
             </div>
-        </div>
     </div>
 </section>
+
 {% endblock content %}
+
