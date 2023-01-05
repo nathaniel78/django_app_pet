@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+{% load meus_filtros %}
+{% block title %}
+Listagem de Consulta
+{% endblock title %}
+
+{% block content %}
+<div class="card">
+    <div class="card-header">
+        <h3 class="card-title">Consulta</h3>
+    </div>
+
+    <div class="card-body p-0">
+        <table class="table table-striped">
+            <tbody>
+                <tr>
+                    <td class="col-md-2"><b>Data do atendimento:</b></td>
+                    <td>{{consulta.data}}</td>
+                </tr>
+                <tr>
+                    <td class="col-md-2"><b>Motivo da consulta:</b></td>
+                    <td>{{consulta.motivo_consulta}}</td>
+                </tr>
+                <tr>
+                    <td class="col-md-2"><b>Nome:</b></td>
+                    <td>{{consulta.pet.nome}}</td>
+                </tr>
+                <tr>
+                    <td class="col-md-2"><b>Nascimento:</b></td>
+                    <td>{{consulta.pet.nascimento}}</td>
+                </tr>
+                <tr>
+                    <td class="col-md-2"><b>Peso atual:</b></td>
+                    <td>{{consulta.peso_atual}}</td>
+                </tr>
+                <tr>
+                    <td class="col-md-2"><b>Medicações pescritos:</b></td>
+                    <td>{{consulta.medicamentos_prescritos}}</td>
+                </tr>
+                <tr>
+                    <td class="col-md-2"><b>Exames prescritos:</b></td>
+                    <td>{{consulta.exames_prescritos}}</td>
+                </tr>
+            </tbody>
+        </table>
+
+    </div>
+
+    <button type="button" class="btn btn-primary pull-right" onclick="window.print();">
+        <i class="fa fa-print"> Imprimir</i>
+    </button>
+</div>
+
+{% endblock content %}

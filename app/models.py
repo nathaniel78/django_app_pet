@@ -44,7 +44,7 @@ class Pet(models.Model):
 
 class ConsultaPet(models.Model):
     pet = models.ForeignKey(Pet, on_delete=models.CASCADE, null=False, blank=False)
-    data = models.DateField(auto_now_add=True, null=False, blank=False)
+    data = models.DateField(null=False, blank=False, auto_now_add=True)
     motivo_consulta = models.CharField(max_length=200, null=False, blank=False)
     peso_atual = models.FloatField(null=False, blank=False)
     medicamento_atual = models.TextField(null=False, blank=True)

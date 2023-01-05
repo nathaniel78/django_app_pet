@@ -1,7 +1,6 @@
 class ConsultaPet():
     def __init__(self, pet, motivo_consulta, peso_atual, medicamento_atual, medicamentos_prescritos,
-                 exames_prescritos, data="")
-
+                 exames_prescritos, data=""):
         self.__pet = pet
         self.__motivo_consulta = motivo_consulta
         self.__peso_atual = peso_atual
@@ -27,10 +26,10 @@ class ConsultaPet():
         self.__motivo_consulta = motivo_consulta
 
     @property
-    def pet(self):
+    def peso_atual(self):
         return self.__peso_atual
 
-    @pet.setter
+    @peso_atual.setter
     def peso_atual(self, peso_atual):
         self.__peso_atual = peso_atual
 
@@ -38,7 +37,7 @@ class ConsultaPet():
     def medicamento_atual(self):
         return self.__medicamento_atual
 
-    @pet.setter
+    @medicamento_atual.setter
     def medicamento_atual(self, medicamento_atual):
         self.__medicamento_atual = medicamento_atual
 
@@ -60,7 +59,7 @@ class ConsultaPet():
 
     @property
     def data(self):
-        return self.data
+        return self.__data
 
     @data.setter
     def data(self, data):

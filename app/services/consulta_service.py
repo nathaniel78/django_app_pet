@@ -1,4 +1,4 @@
-from .models import ConsultaPet
+from ..models import ConsultaPet
 
 # Método de cadastro
 def cadastrar_consulta(consulta):
@@ -7,3 +7,12 @@ def cadastrar_consulta(consulta):
                                              medicamentos_prescritos=consulta.medicamentos_prescritos,
                                              exames_prescritos=consulta.exames_prescritos)
     consulta_bd.save()
+
+# Método listar
+def listar_consultas(id):
+    consultas = ConsultaPet.objects.filter(pet=id).all()
+    return consultas
+
+def listar_consulta(id):
+    consulta = ConsultaPet.objects.get(id=id)
+    return consulta
